@@ -1,0 +1,57 @@
+﻿<Window x:Class="NBomberTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NBomberTest"
+        mc:Ignorable="d"
+        Title="NBomber并发压测工具" Height="280" Width="580" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- URL -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="目标 URL：" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TxtUrl" 
+                 Margin="5" Text="https://example.com/api/test"/>
+        
+        <!-- 数据文件 -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="数据文件：" VerticalAlignment="Center" Margin="0,10,0,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtDataFile" Margin="5,10,5,0"
+                 IsReadOnly="True" Background="#F0F0F0"/>
+        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" x:Name="BtnSelectFile"
+                Content="浏览..." Width="80" Height="24" Margin="0,10,0,0"
+                Click="BtnSelectFile_Click"/>
+
+        
+        <!-- 速率 -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="每秒请求数：" VerticalAlignment="Center" Margin="0,10,0,0"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtRate" Margin="5,10,5,0" Text="50"/>
+
+        <!-- 时长 -->
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="持续（秒）：" VerticalAlignment="Center" Margin="10,10,0,0"/>
+        <TextBox Grid.Row="2" Grid.Column="3" x:Name="TxtDuration" Margin="5,10,0,0" Text="30" Width="80"/>
+
+        <!-- 按钮 -->
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BtnRun" 
+                Content="开始压测" Width="120" Height="35" Margin="0,20,0,0"
+                HorizontalAlignment="Left" Click="BtnRun_Click"/>
+
+        <!-- 状态 -->
+        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" x:Name="LblStatus" 
+                   Text="就绪" Foreground="Gray" Margin="0,15,0,0"/>
+    </Grid>
+</Window>
